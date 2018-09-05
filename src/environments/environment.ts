@@ -6,6 +6,19 @@ export const environment = {
   production: false
 };
 
+export const mailServers = {
+  "sendGrid": {
+      "uri" : "https://api.sendgrid.com/v3/mail/send",
+      "api_key": "test_api"
+  },
+  "mailGun": {
+      "uri" : "https://api.mailgun.net/v3",
+      "api_key": "test_api",
+      "domain": "sandbox"
+  },
+  "maxRetryCount": 3
+}
+
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
