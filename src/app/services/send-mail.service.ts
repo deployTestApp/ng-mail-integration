@@ -25,11 +25,10 @@ export class SendMailService {
   private createMailGunRequestBody (body) {
     const baseTemplate = {
       "from": body.from,
-      "to": "harmohan_a@hotmail.com",
       "subject": body.subject,
       "text": body.text
     };
-    baseTemplate.to = this.mapEmailAddress(body.to);
+    baseTemplate["to"] = this.mapEmailAddress(body.to);
     if (body.cc) {
       baseTemplate["cc"] =this. mapEmailAddress(body.cc);
     } 

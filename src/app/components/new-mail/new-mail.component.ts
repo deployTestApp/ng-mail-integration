@@ -51,6 +51,9 @@ export class NewMailComponent implements OnInit {
     form.to = form.to.split(", ");
     form.cc = form.cc.split(", ");
     form.bcc = form.bcc.split(", ");
+    form.to = form.to.map(to =>to = {email:to});
+    form.cc = form.cc.map(cc =>cc = {email:cc});
+    form.bcc = form.bcc.map(bcc =>bcc = {email:bcc});
     if (form.mailServer === "sendGrid") {
       return this.mailService.postMailThroughSendGrid(form);
     } else {
