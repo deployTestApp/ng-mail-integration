@@ -48,12 +48,12 @@ export class NewMailComponent implements OnInit {
   }
 
   public sendMail(form: any) {
-    form.to = form.to.split(", ");
-    form.cc = form.cc.split(", ");
-    form.bcc = form.bcc.split(", ");
-    form.to = form.to.map(to =>to = {email:to});
-    form.cc = form.cc.map(cc =>cc = {email:cc});
-    form.bcc = form.bcc.map(bcc =>bcc = {email:bcc});
+    form.to = form.to.split(",");
+    form.cc = form.cc.split(",");
+    form.bcc = form.bcc.split(",");
+    form.to = form.to.map(to =>to = {email:to.trim()});
+    form.cc = form.cc.map(cc =>cc = {email:cc.trim()});
+    form.bcc = form.bcc.map(bcc =>bcc = {email:bcc.trim()});
     if (form.mailServer === "sendGrid") {
       return this.mailService.postMailThroughSendGrid(form);
     } else {
