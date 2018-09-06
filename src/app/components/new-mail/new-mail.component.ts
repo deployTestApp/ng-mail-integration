@@ -37,7 +37,7 @@ export class NewMailComponent implements OnInit {
 
   public validateEmail(mailList: FormControl) {
     if(mailList.pristine) return null;
-    const mailAddresses: [] = (mailList.value).split(",");
+    const mailAddresses = (mailList.value).split(",");
     const isInvalid = mailAddresses.some((mail: string) => {
       return !!mail.trim().match(/^(?!.*?@.*?\.).*/gi);
     });
