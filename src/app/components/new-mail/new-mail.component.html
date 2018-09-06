@@ -1,39 +1,46 @@
 <div class = "container">
   <form [formGroup]="mailForm" (submit)="sendMail(mailForm.value)">
+    <label for="mailServer">Select a mail server:</label>
     <div class="row justify-content-between">
-      <select class="custom-select col-lg-2" id="mailServer" formControlName="mailServer" [value]="mailForm.controls['mailServer'].value || 'dfjd'">
-        <option selected value="Select Mail Server">Select Mail Server</option>
-        <option *ngFor="let server of servers" [value]="server">{{server}}</option>
+      <select class="custom-select col-lg-2" id="mailServer" formControlName="mailServer">
+        <option *ngFor="let server of servers" [value]="server.value">{{server.name}}</option>
       </select>
       <br>
-      <button type="submit" class="btn btn-primary col-lg-1">Send</button>
+      <button type="submit" [disabled] = "mailForm?.invalid" class="btn btn-primary col-lg-1">Send</button>
     </div>
-    <div class="content border rounded">
+    <br>
+    <div class="content">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="to">To:</span>
         </div>
-        <input type="text" formControlName="to" aria-label="To" popover="Please enter a valid email" triggers="" placement="right" [isOpen]="mailForm.controls['to'].errors">
+        <input type="text" class="col" formControlName="to" aria-label="To" popover="Please enter a valid email" triggers="" placement="left" [isOpen]="mailForm.controls['to'].hasError('emailError')">
       </div>
       <div class="input-group mb-3" >
         <div class="input-group-prepend">
-          <span class="input-group-text" id="cc">Cc:</span>
+          <span class="input-group-text" id="cc">CC:</span>
         </div>
-        <input type="text" formControlName="cc" aria-label="CC" popover="Please enter a valid email" triggers="" placement="right" [isOpen]="mailForm.controls['cc'].errors">
+        <input type="text" class="col" formControlName="cc" aria-label="CC" popover="Please enter a valid email" triggers="" placement="left" [isOpen]="mailForm.controls['cc'].errors">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="bcc">Bcc:</span>
+          <span class="input-group-text" id="bcc">BCC:</span>
         </div>
-        <input type="text" formControlName="bcc" aria-label="Bcc" popover="Please enter a valid email" triggers="" placement="right" [isOpen]="mailForm.controls['bcc'].errors">
+        <input type="text" class="col" formControlName="bcc" aria-label="Bcc" popover="Please enter a valid email" triggers="" placement="left" [isOpen]="mailForm.controls['bcc'].errors">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="from">From:</span>
+        </div>
+        <input type="text" class="col" formControlName="from" aria-label="From" popover="Please enter a valid email" triggers="" placement="left" [isOpen]="mailForm.controls['from'].errors">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="subject">Subject:</span>
         </div>
-        <input type="text" formControlName="subject" aria-label="Subject">
+        <input type="text" class="col" formControlName="subject" aria-label="Subject">
       </div>
-      <textarea formControlName="text" aria-label="textarea"></textarea>
+      <textarea formControlName="text" class="col" aria-label="textarea"></textarea>
     </div>
   </form>
 </div>

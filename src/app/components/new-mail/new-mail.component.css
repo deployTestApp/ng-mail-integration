@@ -1,0 +1,7 @@
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+textarea {
+  height: calc(50px + 10vh);
+}

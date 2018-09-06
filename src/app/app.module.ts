@@ -6,6 +6,7 @@ import { NewMailComponent } from './components/new-mail/new-mail.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -85,7 +85,10 @@ export class SendMailService {
     const mailServerUri = mailServers.sendGrid.uri;
     const reqBody = this.createSendGridRequestBody(body);
     const authHeader = `Bearer ${mailServers.sendGrid.api_key}`;
-    return this.postmail(mailServerUri, reqBody, authHeader, false);
+    // return this.postmail(mailServerUri, reqBody, authHeader, false);
+    return new Promise((resolve, reject) => {
+      return resolve("send mail through send grid");
+    });
   }
 
   public postMailThroughMailGun = function(body) {
@@ -96,7 +99,10 @@ export class SendMailService {
     const base64ApiKey = Buffer.from(`api:${apiKey}`).toString('base64');
     const authHeader = `Basic ${base64ApiKey}`;
     const reqBody = this.createMailGunRequestBody(body);
-    return this.postmail(mailServerUri, reqBody, authHeader, true);
+    // return this.postmail(mailServerUri, reqBody, authHeader, true);
+    return new Promise((resolve, reject) => {
+      return resolve("send mail through mail gun");
+    });
   }
   
 }
